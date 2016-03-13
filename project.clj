@@ -13,9 +13,9 @@
   :plugins [[environ/environ.lein "0.3.1"]]
   :hooks [environ.leiningen.hooks]
   :uberjar-name "prototype.jar"
-  :target-path "target/%s"
   :profiles {:production {:env {:production true}}})
 
 
+;;  :target-path "target/%s"
 ;;  :main ^:skip-aot prototype.core
 ;;  :profiles {:uberjar {:aot :all}})
