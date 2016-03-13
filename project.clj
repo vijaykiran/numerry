@@ -10,5 +10,11 @@
                  [clojurewerkz/neocons "3.1.0"]
                  [ring "1.4.0"]]
   :main ^:skip-aot prototype.core
+  :min-lein-version "2.0.0"
+  :plugins [[environ/environ.lein "0.3.1"]]
+  :hooks [environ.leiningen.hooks]
+  :uberjar-name "prototype.jar"
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:production {:env {:production true}} :uberjar {:aot :all}})
+
+
