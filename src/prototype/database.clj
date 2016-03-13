@@ -1,13 +1,13 @@
 (ns prototype.database
   (:require [clojurewerkz.neocons.rest :as nr]
-            [clojurewerkz.neocons.rest.nodes :as nn]))
+            [clojurewerkz.neocons.rest.nodes :as nn]
+            [clojurewerkz.neocons.rest.relationships :as nrl]))
 
-(defn conn
-  []
-  (nr/connect "http://localhost:7474/db/data/" "neo4j" "test"))
+;; (def conn
+;;   (nr/connect "http://localhost:7474/db/data/" "neo4j" "test"))
 
 ;; (defn create
-;;   []
-;;   (nn/create (conn) {:name "jon"}))
+;;   [node &nodes]
+;;   (nn/create (conn) {:name "one" :value 1}))
 
 
