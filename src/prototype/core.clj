@@ -21,7 +21,7 @@
 (defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
-   :body "Hello from Heroku"})
+   :body "Hello world!"})
 
 (defroutes app
   (GET "/" []
@@ -30,7 +30,7 @@
        (route/not-found (slurp (io/resource "404.html")))))
 
 (defn -main [& [port]]
-  (let [port (Integer. (or port (env :port) 5000))]
+  (let [port (Integer. (or port (env :port) 8140))]
     (jetty/run-jetty (site #'app) {:port port :join? false})))
 
 
