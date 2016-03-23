@@ -14,16 +14,15 @@
   :plugins [[environ/environ.lein "0.3.1"]
             [lein-cljsbuild "1.1.3"]]
   :hooks [environ.leiningen.hooks leiningen.cljsbuild]
-;  :prep-tasks ["compile" ["cljsbuild" "once"]]
   :uberjar-name "prototype.jar"
   :profiles {:production {:env {:production true}} :uberjar {:aot :all}}
   :target-path "target/%s"
 
-  ;; :cljsbuild {:builds [{:source-paths ["src"]
-  ;;                       :compiler {:output-to "resources/public/js/main.js"
-  ;;                                  :optimizations :whitespace
-  ;;                                  :pretty-print true}
-  ;;                       :jar true}]}
+  :cljsbuild {:builds [{:source-paths ["src"]
+                        :compiler {:output-to "resources/public/js/numerry.js"
+                                   :optimizations :whitespace
+                                   :pretty-print true}
+                        :jar true}]}
   )
 
 
