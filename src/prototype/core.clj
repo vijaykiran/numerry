@@ -1,4 +1,5 @@
 (ns prototype.core
+  (:gen-class)
   (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
@@ -6,26 +7,14 @@
             [ring.adapter.jetty :as jetty]
             [environ.core :refer [env]]))
 
-;;  (:gen-class)))
-
-;; (defn -main
-;;   "I don't do a whole lot ... yet."
-;;   [& args]
-;;   (println "Hello, World!"))
-
-;; (defn handler [request]
-;;   {:status 200
-;;    :headers {"Content-Type" "text/html"}
-;;    :body "Hello World"})
-
-(defn splash []
+(defn app []
   {:status 200
    :headers {"Content-Type" "text/plain"}
    :body "Hello world!"})
 
 (defroutes app
   (GET "/" []
-       (splash))
+       (app))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
