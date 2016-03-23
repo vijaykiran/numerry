@@ -7,14 +7,14 @@
             [ring.adapter.jetty :as jetty]
             [environ.core :refer [env]]))
 
-(defn app []
+(defn splash []
   {:status 200
    :headers {"Content-Type" "text/plain"}
    :body "Hello world!"})
 
 (defroutes app
   (GET "/" []
-       (app))
+       (splash))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 

@@ -11,14 +11,15 @@
                  [ring "1.4.0"]]
   :min-lein-version "2.0.0"
   :main ^:skip-aot prototype.core
-  :plugins [[environ/environ.lein "0.3.1"]
-            [lein-cljsbuild "1.1.3"]]
+  :plugins [[environ/environ.lein "0.3.1"] [lein-cljsbuild "1.1.3"]]
   :hooks [environ.leiningen.hooks leiningen.cljsbuild]
   :uberjar-name "prototype.jar"
   :profiles {:production {:env {:production true}} :uberjar {:aot :all}}
   :target-path "target/%s"
 
-  :cljsbuild {:builds [{:source-paths ["src"]
+  :source-paths ["src/clj"] :test-paths ["test/clj"]
+  :cljsbuild {:builds [{:source-paths ["src/cljs"]
+                        :test-paths ["test/cljs"]
                         :compiler {:output-to "resources/public/js/numerry.js"
                                    :optimizations :whitespace
                                    :pretty-print true}
