@@ -1,4 +1,4 @@
-(ns prototype.numerry)
+(ns prototype.core)
 
 (enable-console-print!)
 
