@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/numerry/prototype.svg?branch=master)](https://travis-ci.org/numerry/prototype)
+# Numerry
 
-# Prototype
-Numerry's prototype
-
+The core engine of the thing, expected to grow organically.
 
