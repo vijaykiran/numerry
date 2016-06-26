@@ -1,21 +1,15 @@
 #! /bin/sh
 ### BEGIN INIT INFO
-# Provides:          skeleton
+# Provides:          numerry
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Example initscript
-# Description:       This file should be used to construct scripts to be
-#                    placed in /etc/init.d.
+# Short-Description: numerry's init script
+# Description:       numerry's init script
 ### END INIT INFO
 
-# Author: Foo Bar <foobar@baz.org>
-#
-# Please remove the "Author" lines above and replace them
-# with your own name if you copy and modify this script.
-
-# Do NOT "set -e"
+# Author: Adrien Haxaire <adrien@numerry.com>
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
@@ -25,6 +19,7 @@ DAEMON=/usr/bin/java
 DAEMON_ARGS="$JVM_OPTS -cp /var/numerry/numerry.jar clojure.main -m numerry.core"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
+LOGFILE=/var/log/$NAME.log
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
@@ -52,7 +47,7 @@ do_start()
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
 		|| return 1
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --background \
-                --startas /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > /var/log/numerry.log 2>&1" \
+                --startas /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > $LOGFILE 2>&1" \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
