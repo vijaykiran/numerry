@@ -1,10 +1,10 @@
 server {
     listen 80;
     listen [::]:80 default ipv6only=on;
-    server_name numerry.com;
+    server_name app.numerry.com;
 
-    access_log /var/log/numerry-com_access.log;
-    error_log /var/log/numerry-com_error.log;
+    access_log /var/log/numerry_access.log;
+    error_log /var/log/numerry_error.log;
 
     location / {
       proxy_pass http://localhost:8080/;
