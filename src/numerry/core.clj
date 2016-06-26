@@ -7,7 +7,7 @@
 (defn app [request]
   (response {:numerry "0.0.1"}))
 
-(defn -main [&args]
+(defn -main []
   (let [port (Integer/parseInt (get (System/getenv) "PORT" "8140"))]
     (run-jetty (wrap-json-response app) {:port port})))
 
