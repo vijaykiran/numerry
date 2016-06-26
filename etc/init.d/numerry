@@ -20,9 +20,9 @@
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="numerry.com"
-NAME=numerry-com
+NAME=numerry
 DAEMON=/usr/bin/java
-DAEMON_ARGS="$JVM_OPTS -cp /var/numerry/numerry-com.jar clojure.main -m numerry-com.core"
+DAEMON_ARGS="$JVM_OPTS -cp /var/numerry/numerry.jar clojure.main -m numerry.core"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
@@ -52,7 +52,7 @@ do_start()
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
 		|| return 1
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --background \
-                --startas /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > /var/log/numerry-com.log 2>&1" \
+                --startas /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > /var/log/numerry.log 2>&1" \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend
