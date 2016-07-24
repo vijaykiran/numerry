@@ -1,6 +1,6 @@
-(ns numerry-com.core-test
+(ns numerry.core-test
   (:require [clojure.test :refer :all]
-            [numerry-com.core :refer :all]))
+            [numerry.core :refer :all]))
 
 (deftest a-test
   (testing "Fixed."
