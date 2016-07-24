@@ -1,0 +1,7 @@
+#!/bin/sh
+
+lein uberjar
+scp target/uberjar/numerry.jar $NUMERRY_SSH:$NUMERRY_HOME/numerry.jar
+ssh $NUMERRY_SSH sudo cp numerry.jar /var/numerry/numerry.jar
+ssh $NUMERRY_SSH sudo service numerry restart
+
