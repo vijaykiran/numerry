@@ -12,3 +12,4 @@ pom.xml.asc
 .lein-env
 .nrepl-port
 numerry.js
+deploy
