@@ -5,6 +5,6 @@
             [numerry.routes :refer :all]))
 
 (defn -main []
-  (let [port (Integer/parseInt (get (System/getenv) "PORT" "8080"))]
+  (let [port (Integer/parseInt (get (System/getenv) "PORT" "8140"))]
     (run-jetty (site main-routes) {:port port :join? false})))
 
