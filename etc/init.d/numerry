@@ -19,7 +19,7 @@
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="numerry.com"
+DESC="numerry"
 NAME=numerry
 DAEMON=/usr/bin/java
 DAEMON_ARGS="$JVM_OPTS -cp /var/numerry/numerry.jar clojure.main -m numerry.core"
