@@ -16,7 +16,6 @@
   :main ^:skip-aot numerry.core
   :target-path "target/%s"
   :ring {:handler numerry.core/-main}
-  :profiles {:uberjar {:aot :all}
-             :production {:env {:production true}}})
+  :profiles {:uberjar {:aot :all}})
 
 
