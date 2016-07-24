@@ -1,3 +1,3 @@
-# numerry-com
+# numerry
 
-Numerry's website
+Numerry's engine and website
