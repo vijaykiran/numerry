@@ -1,4 +1,3 @@
-# Numerry
+# numerry-com
 
-The core engine of the thing, expected to grow organically.
-
+Numerry's website

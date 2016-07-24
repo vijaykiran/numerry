@@ -1,13 +1,13 @@
 server {
     listen 80;
     listen [::]:80 default ipv6only=on;
-    server_name app.numerry.com;
+    server_name numerry.com;
 
-    access_log /var/log/numerry_access.log;
-    error_log /var/log/numerry_error.log;
+    access_log /var/log/numerry-com_access.log;
+    error_log /var/log/numerry-com_error.log;
 
     location / {
-      proxy_pass http://localhost:8140/;
+      proxy_pass http://localhost:8080/;
       proxy_set_header Host $http_host;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
       proxy_set_header X-Forwarded-Proto $scheme;
