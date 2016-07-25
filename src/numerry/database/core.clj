@@ -17,4 +17,12 @@
                      :db "numerry"))
                      ;; :async? true))
 
+(defn field [table plot-id field-keyword]
+  "Extract a top level field from a document."
+  (field-keyword
+   (-> (r/table table)
+       (r/get plot-id)
+       (r/pluck [field-keyword])
+       (r/run conn))))
+
 
