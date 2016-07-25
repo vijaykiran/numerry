@@ -17,3 +17,7 @@
   "Extract the data from a specific plot."
   (db/field "plots" plot-id :data))
 
+(defn title [plot-id]
+  "Extract the data from a specific plot."
+  (db/field "plots" plot-id :title))
+

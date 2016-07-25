@@ -1,6 +1,7 @@
 (ns numerry.views
   (:require [ring.util.response :refer :all]
-            [hiccup.page :refer [html5]]))
+            [hiccup.page :refer [html5]]
+            [numerry.database.plot :as p]))
 
 (defn base [title & body]
   (html5
@@ -18,5 +19,6 @@
 (defn home []
   (base "Numerry" [:p "Hello world!"]))
 
-
+(defn plots [id]
+  (base (p/title id) (p/data id)))
 
