@@ -5,7 +5,8 @@
 
 (defroutes main-routes
   (GET "/" [] (home))
-  (GET "/p/:id" [id] (plots id))
+  (GET "/p/:id" [id] (plot id))
+  (GET "/plots" [] (plots))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
