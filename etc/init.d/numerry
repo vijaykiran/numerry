@@ -15,6 +15,11 @@ SCRIPTNAME=/etc/init.d/$NAME
 # Read configuration variable file if it is present
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
+if [ -z "$NUMERRY_DATABASE_URL" ] ;  then
+  echo "NUMERRY_DATABASE_URL is not set, please set it in /etc/default/numerry." >&2
+  exit 1
+fi
+
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
 
@@ -35,7 +40,7 @@ do_start()
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
 		|| return 1
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --background \
-                --startas /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > /var/log/numerry.log 2>&1" \
+                --startas /bin/bash -- -c "NUMERRY_DATABASE_URL=$NUMERRY_DATABASE_URL exec $DAEMON $DAEMON_ARGS > /var/log/numerry.log 2>&1" \
 		|| return 2
 	# Add code here, if necessary, that waits for the process to be ready
 	# to handle requests from services started subsequently which depend

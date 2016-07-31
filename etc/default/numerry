@@ -1,0 +1,5 @@
+# Numerry's default environment variables for the service.
+# Edit it to your match your config if needed
+NUMERRY_DATABASE_URL=127.0.0.1
+NUMERRY_DATABASE_PORT=28015
+NUMERRY_DATABASE_NAME=numerry
