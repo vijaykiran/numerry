@@ -2,5 +2,5 @@
   (:require [cheshire.core :refer :all]))
 
 (defn plot [data]
-  (generate-string data))
+  [:div {:id "data"} (generate-string data)])
 
