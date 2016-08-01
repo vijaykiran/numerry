@@ -1,7 +1,7 @@
 (ns numerry.routes
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [numerry.views :refer :all]))
+            [numerry.views.core :refer :all]))
 
 (defroutes main-routes
   (GET "/" [] (home))

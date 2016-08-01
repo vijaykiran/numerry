@@ -1,8 +1,8 @@
-(ns numerry.views
+(ns numerry.views.core
   (:require [ring.util.response :refer :all]
             [hiccup.page :refer [html5]]
             [numerry.database.plot :as db]
-            [numerry.plot :as plot]))
+            [numerry.views.plot.json :as plot]))
 
 (defn base [title & body]
   (html5

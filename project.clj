@@ -7,7 +7,8 @@
                  [ring "1.4.0"]
                  [compojure "1.5.1"]
                  [environ "1.0.0"]
-                 [com.apa512/rethinkdb "0.15.26"]]
+                 [com.apa512/rethinkdb "0.15.26"]
+                 [cheshire "5.6.3"]]
   :min-lein-version "2.0.0"
   :plugins [[environ/environ.lein "0.3.1"]
             [lein-ring "0.9.7"]]
