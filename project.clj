@@ -5,6 +5,7 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [ring "1.4.0"]
+                 [info.sunng/ring-jetty9-adapter "0.9.5"]
                  [compojure "1.5.1"]
                  [environ "1.0.0"]
                  [com.apa512/rethinkdb "0.15.26"]
