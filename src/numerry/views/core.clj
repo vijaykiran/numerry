@@ -1,8 +1,17 @@
 (ns numerry.views.core
   (:require [ring.util.response :refer :all]
-            [hiccup.page :refer [html5]]
+            [hiccup.page :refer [html5 include-js]]
+            [cheshire.core :refer :all]
+            [ring.util.codec :refer :all]
             [numerry.database.plot :as db]
             [numerry.views.plot.json :as plot]))
+
+(defn to-uuid [id]
+  (String. (base64-decode id) "UTF-8"))
+
+(defn from-uuid [uuid]
+  (base64-encode (.getBytes uuid)))
+
 
 (defn base [title & body]
   (html5
@@ -15,13 +24,18 @@
     [:link {:rel="mask-icon" :href "/safari-pinned-tab.svg" :color "#5bbad5"}]
     [:meta {:name "theme-color" :content "#ffffff"}]
     [:title title]]
-   [:body body]))
+   [:body body]
+   (include-js "https://d3js.org/d3.v4.min.js")
+   (include-js "/circles.js")))
 
 (defn home []
   (base "Numerry" [:p "Hello world!"]))
 
+(defn plot-data [id]
+  (generate-string (db/data (to-uuid id))))
+
 (defn plot [id]
-  (base (db/title id) (plot/plot (db/data id))))
+  (base (db/title (to-uuid id)) nil))
 
 (defn plots []
   (base "Plots" [:p "TODO: List the available plots."]))
