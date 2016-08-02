@@ -1,5 +1,4 @@
 function plot(json) {
-    console.log(json);
 
     var svg = d3.select("body").append("svg");
     
@@ -9,8 +8,7 @@ function plot(json) {
 	.attr("cx", function(d) {return d["x"];})
 	.attr("cy", function(d) {return d["y"];})
 	.attr("r", 20)
-	.style("fill", "steelblue");
-    
+	.style("fill", "steelblue");    
 };
 
 var socket = new WebSocket("ws://" + window.location.host + "/data/");
@@ -20,7 +18,6 @@ socket.onopen = function (event) {
 };
 
 socket.onmessage = function (event) {
-    console.log(event.data);
     var data = JSON.parse(event.data);
     plot(data);
 }
