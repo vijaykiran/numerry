@@ -13,7 +13,7 @@ function plot(json) {
     
 };
 
-var socket = new WebSocket("ws://numerry.com/data/");
+var socket = new WebSocket("ws://" + window.location.host + "/data/");
 
 socket.onopen = function (event) {
     console.log("Socket opened");
