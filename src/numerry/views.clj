@@ -1,17 +1,15 @@
-(ns numerry.views.core
+(ns numerry.views
   (:require [ring.util.response :refer :all]
             [hiccup.page :refer [html5 include-js]]
             [cheshire.core :refer :all]
             [ring.util.codec :refer :all]
-            [numerry.database.plot :as db]
-            [numerry.views.plot.json :as plot]))
+            [numerry.database :as db]))
 
 (defn to-uuid [id]
   (String. (base64-decode id) "UTF-8"))
 
 (defn from-uuid [uuid]
   (base64-encode (.getBytes uuid)))
-
 
 (defn base [title & body]
   (html5
@@ -31,11 +29,8 @@
 (defn home []
   (base "Numerry" [:p "Hello world!"]))
 
-(defn plot-data [id]
-  (generate-string (db/data (to-uuid id))))
-
 (defn plot [id]
-  (base (db/title (to-uuid id)) nil))
+  (base (to-uuid id) nil))
 
 (defn plots []
   (base "Plots" [:p "TODO: List the available plots."]))
