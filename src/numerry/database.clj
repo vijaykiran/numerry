@@ -1,7 +1,6 @@
 (ns numerry.database
   (:require [rethinkdb.query :as r]
-            [environ.core :refer [env]]
-            [ring.adapter.jetty9 :as jetty]))
+            [environ.core :refer [env]]))
 
 (def url
   (if-let [url (env :numerry-database-url)]
