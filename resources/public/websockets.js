@@ -13,13 +13,15 @@ function plot(json) {
 
 var socket = new WebSocket("ws://" + window.location.host + "/data/");
 
-socket.onopen = function (event) {
-    console.log("Socket opened");
-};
-
 socket.onmessage = function (event) {
     var data = JSON.parse(event.data);
+    console.log(data);
     plot(data);
-}
+};
+
+socket.onopen = function () {
+    console.log("Socket opened");
+    socket.send(JSON.stringify({"uri": window.location.pathname}));
+};
 
 

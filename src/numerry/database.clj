@@ -1,9 +1,7 @@
 (ns numerry.database
   (:require [rethinkdb.query :as r]
             [environ.core :refer [env]]
-            [clojure.core.async :as a
-             :refer [>! <! >!! <!! go chan buffer close! thread
-                     alts! alts!! timeout]]))
+            [ring.adapter.jetty9 :as jetty]))
 
 (def url
   (if-let [url (env :numerry-database-url)]
@@ -15,12 +13,15 @@
     (read-string port)
     28015))
 
+(def numerry
+  "numerry")
+
 (defn connect-to [db-name]
   (r/connect :host url :port port :db db-name :async? false))
 
-(defn plots [db]
-  "List the available plots."
+(defn plot [db id]
   (with-open [conn (connect-to db)]
     (-> (r/table "plots")
+        (r/get id)
         (r/run conn))))
 
