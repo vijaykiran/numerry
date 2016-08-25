@@ -16,6 +16,7 @@
     [:meta {:name "theme-color" :content "#ffffff"}]
     (include-js "https://d3js.org/d3.v4.min.js")
     (include-js "/websockets.js")
+    (include-js "/plot.js")
     [:title title]]
    [:body body]))
 
