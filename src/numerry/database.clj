@@ -1,6 +1,7 @@
 (ns numerry.database
   (:require [rethinkdb.query :as r]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]]
+            [clojure.core.async :refer [<!!]]))
 
 (def url
   (if-let [url (env :numerry-database-url)]
@@ -16,11 +17,12 @@
   "numerry")
 
 (defn connect-to [db-name]
-  (r/connect :host url :port port :db db-name :async? false))
+  (r/connect :host url :port port :db db-name :async? true))
 
 (defn plot [db id]
   (with-open [conn (connect-to db)]
-    (-> (r/table "plots")
-        (r/get id)
-        (r/run conn))))
+    (<!!
+     (-> (r/table "plots")
+         (r/get id)
+         (r/run conn)))))
 
